@@ -3,12 +3,12 @@ module.exports = {
   title: "MetAMDB",
   tagline: "Metabolic Atom Mapping Database",
   url: "https://CollinStark.github.io/",
-  baseUrl: "/casm/",
+  baseUrl: "/metamdb-docs/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "CollinStark", // Usually your GitHub org/user name.
-  projectName: "casm", // Usually your repo name.
+  projectName: "metamdb-docs", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "MetAMDB",
@@ -25,7 +25,7 @@ module.exports = {
         },
         // { to: "/blog", label: "Blog", position: "left" },
         {
-          href: "https://github.com/CollinStark/casm",
+          href: "https://github.com/CollinStark/metamdb",
           label: "GitHub",
           position: "right",
         },
@@ -48,7 +48,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/CollinStark/casm",
+              href: "https://github.com/CollinStark/metamdb",
             },
           ],
         },
