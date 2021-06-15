@@ -4,7 +4,7 @@ module.exports = {
   tagline: "Metabolic Atom Mapping Database",
   url: "https://CollinStark.github.io/",
   baseUrl: "/metamdb-docs/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "CollinStark", // Usually your GitHub org/user name.
