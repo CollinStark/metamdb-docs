@@ -1,1 +1,0 @@
-(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[711],{4569:function(s){"use strict";s.exports=JSON.parse('{"allTagsPath":"/metamdb-docs/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/metamdb-docs/blog/tags/hello"}')}}]);
