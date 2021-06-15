@@ -15,10 +15,10 @@ Currently, the only available model format is CSV. Other file formats will be av
 
 ## File Structure
 The file is structured in 4 columns: 
-- [Reaction Name](/metamdb-docs/docs/atom-mapping/reaction-model#reaction-name)
-- [Substrates](/metamdb-docs/docs/atom-mapping/reaction-model#substrates)
-- [Reaction Arrow](/metamdb-docs/docs/atom-mapping/reaction-model#reaction-arrow)
-- [Products](/metamdb-docs/docs/atom-mapping/reaction-model#products)
+- [Reaction Name](/metamdb-docs/atom-mapping/reaction-model#reaction-name)
+- [Substrates](/metamdb-docs/atom-mapping/reaction-model#substrates)
+- [Reaction Arrow](/metamdb-docs/atom-mapping/reaction-model#reaction-arrow)
+- [Products](/metamdb-docs/atom-mapping/reaction-model#products)
 
 Each column has special fields and options.
 
@@ -54,4 +54,4 @@ The following reaction arrows can be used:
 - Reversible: <=>, <->
 
 ### Products
-Products effectively function like [Substrates](/metamdb-docs/docs/atom-mapping/reaction-model#substrates).
+Products effectively function like [Substrates](/metamdb-docs/atom-mapping/reaction-model#substrates).
