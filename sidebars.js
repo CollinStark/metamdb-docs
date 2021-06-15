@@ -12,7 +12,17 @@
 module.exports = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   mySidebar: [
-    { type: "doc", id: "intro", label: "Introduction" },
+    {
+      type: "category",
+      label: "Welcome",
+      items: [
+        {
+          type: "doc",
+          label: "About Docs",
+          id: "intro",
+        },
+      ],
+    },
     {
       type: "category",
       label: "Atom Mapping",
