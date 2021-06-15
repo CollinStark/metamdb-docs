@@ -38,8 +38,8 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "Intro",
-              to: "/docs/intro",
+              label: "Welcome",
+              to: "/",
             },
           ],
         },
