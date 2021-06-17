@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+slug: /reaction-image
 ---
 
-# RXN Image
+# Reaction Image

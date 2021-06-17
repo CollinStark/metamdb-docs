@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+slug: /database-search
 ---
 
 # Database Search
