@@ -10,5 +10,5 @@ Welcome to the MetAMDB Documentation!
 You can find different topics in the table of contents. On desktop, you should see it in the left sidebar. On mobile, you should see it after pressing an icon with arrows in the top left corner.
 
 ## Feedback
-We are always open to [your feedback](https://github.com/CollinStark/metamdb/issues/new/choose).
+We are always open to [:link: your feedback](https://github.com/CollinStark/metamdb/issues/new/choose).
 
