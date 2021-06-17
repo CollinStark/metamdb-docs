@@ -7,8 +7,8 @@ module.exports = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "CollinStark", // Usually your GitHub org/user name.
-  projectName: "metamdb-docs", // Usually your repo name.
+  organizationName: "CollinStark",
+  projectName: "metamdb-docs",
   themeConfig: {
     navbar: {
       title: "MetAMDB",
@@ -23,7 +23,6 @@ module.exports = {
           position: "left",
           label: "Documentation",
         },
-        // { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/CollinStark/metamdb",
           label: "GitHub",
@@ -33,26 +32,6 @@ module.exports = {
     },
     footer: {
       style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Welcome",
-              to: "/",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "GitHub",
-              href: "https://github.com/CollinStark/metamdb",
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} MetAMDB`,
     },
   },
@@ -63,7 +42,6 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           routeBasePath: "/",
-          // Please change this to your repo.
         },
         blog: false,
         theme: {
