@@ -11,12 +11,12 @@ Uploaded user metabolic models are displayed in as atom mapping models. The feat
 
 ## Table Format
 The atom mapping table is divided in the following six columns:
-- [Atom Mapping](/metamdb-docs/atom-mapping/atom-mapping-model#atom-mapping)
-- [Identifier](/metamdb-docs/atom-mapping/atom-mapping-model#identifier)
-- [Name](/metamdb-docs/atom-mapping/atom-mapping-model#name)
-- [Substrates](/metamdb-docs/atom-mapping/atom-mapping-model#substrates)
-- [Products](/metamdb-docs/atom-mapping/atom-mapping-model#products)
-- [Curated](/metamdb-docs/atom-mapping/atom-mapping-model#curated)
+- [Atom Mapping](/metamdb-docs/atom-mapping-model#atom-mapping)
+- [Identifier](/metamdb-docs/atom-mapping-model#identifier)
+- [Name](/metamdb-docs/atom-mapping-model#name)
+- [Substrates](/metamdb-docs/atom-mapping-model#substrates)
+- [Products](/metamdb-docs/atom-mapping-model#products)
+- [Curated](/metamdb-docs/atom-mapping-model#curated)
 
 ### Atom Mapping
 The atom mapping is accessible with the plus "+" button. Clicking the button of a specific reaction opens only that atom mapping. Clicking the button in the columns names row opens all atom mappings. Clicking an opened button closes the mapping again.
@@ -33,7 +33,7 @@ The column field shows the given reaction name. The field is editable by double 
 The substrates column shows all the given substrate metabolites quantity and names. Additionally if a metabolite id was identified a link to the [:link: Metabolite](/metamdb-docs/database-query/metabolite) page will be established.
 
 ### Products
-Products effectively function like [Substrates](/metamdb-docs/atom-mapping/atom-mapping-model#substrates).
+Products effectively function like [Substrates](/metamdb-docs/atom-mapping-model#substrates).
 
 ### Curated
 The curated column indicates the atom mapping status:

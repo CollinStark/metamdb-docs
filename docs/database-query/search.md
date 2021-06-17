@@ -6,16 +6,16 @@ slug: /database-search
 # Database Search
 
 The database can be queried for reaction names as well as metabolites. The type of query can be changed by clicking on the dropdown menu. After successfully searching the database a table with the following columns is displayed:
-- [Name](/metamdb-docs/database-query/search#name)
-- [Reaction ID](/metamdb-docs/database-query/search#reaction-id)
-- [Formula](/metamdb-docs/database-query/search#formula)
-- [Curated](/metamdb-docs/database-query/search#curated)
+- [Name](/metamdb-docs/database-search#name)
+- [Reaction ID](/metamdb-docs/database-search#reaction-id)
+- [Formula](/metamdb-docs/database-search#formula)
+- [Curated](/metamdb-docs/database-search#curated)
 
 ## Name
 The name column contains all database identifiers corresponding to the found reaction. 
 
 ## Reaction ID
-Reaction identifiers of the MetAMDB database are displayed here with links to the respective [:link: Reaction](/metamdb-docs/database-query/reaction) pages. The table is sortable by reactions identifiers.
+Reaction identifiers of the MetAMDB database are displayed here with links to the respective [:link: Reaction](/metamdb-docs/reaction) pages. The table is sortable by reactions identifiers.
 
 ## Formula
 Depicted here are the formula of their respective reations.
