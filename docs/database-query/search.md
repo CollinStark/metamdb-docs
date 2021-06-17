@@ -15,7 +15,7 @@ The database can be queried for reaction names as well as metabolites. The type 
 The name column contains all database identifiers corresponding to the found reaction. 
 
 ## Reaction ID
-Reaction identifiers of the MetAMDB database are displayed here with links to the respective [:link: Reaction](/metamdb-docs/reaction) pages. The table is sortable by reactions identifiers.
+Reaction identifiers of the MetAMDB database are displayed here with links to the respective [Reaction](/metamdb-docs/reaction) pages. The table is sortable by reactions identifiers.
 
 ## Formula
 Depicted here are the formula of their respective reations.

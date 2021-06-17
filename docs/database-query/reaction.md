@@ -18,7 +18,7 @@ The reaction tab shows the reaction formula.
 Identifiers include all collected identifiers separated by database.
 
 ## Compounds
-Substrate and product metabolite names with links to their respective [:link: Metabolite](/metamdb-docs/metabolite) pages.
+Substrate and product metabolite names with links to their respective [Metabolite](/metamdb-docs/metabolite) pages.
 
 ## Atom Mappings
 In this tab the atom mapping information is stored in the RXN file format, as well as the corresponding reaction image. Both files can be opened with the respective buttons and can be downloaded. The manual curation status is also depicted.
