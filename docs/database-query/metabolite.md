@@ -20,4 +20,4 @@ Identifiers are collected from their respective databases ([:link: BRENDA](https
 The elements tab displays each element and its quantities.
 
 ## Reactions
-The reactions tab contains a query link to the [Database Query](/metamdb-docs/search) page, which automatically queries the database for reactions containing said metabolite.
+The reactions tab contains a query link to the [Database Query](/metamdb-docs/database-search) page, which automatically queries the database for reactions containing said metabolite.
