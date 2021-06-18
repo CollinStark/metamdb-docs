@@ -5,7 +5,7 @@ slug: /reaction-model
 
 # Reaction Model
 
-MetAMDB allows users to upload their own metabolic reaction models. These models allow for an in-depth insight into organism mechanisms, which are utilized in various network simulation techniques. Some of these techniques not only require network-wide reaction knowledge, but also knowledge about their respective atom mappings. MetAMDB makes it possible for users to generate an atom mapping model for their respective reaction models. The following sections will describe how to create such a reaction model and what options are available.
+MetAMDB allows users to upload their own metabolic reaction models. MetAMDB makes it possible for users to generate an atom mapping model for their respective reaction models. The following sections will describe how to create such a reaction model and what options are available.
 
 [Download this example model to follow along!](../assets/example_model.csv) (based on [*Antoniewicz et al.* 2011](https://doi.org/10.1016/j.ymben.2011.07.002))
 

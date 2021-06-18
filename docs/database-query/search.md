@@ -5,7 +5,7 @@ slug: /database-search
 
 # Database Search
 
-The database can be queried for reaction names as well as metabolites. The type of query can be changed by clicking on the dropdown menu. The search is performed with a fuzzy match algorithm, meaning that approximate results are matched (Glucose :arrow_right: D-Glucose/Glucose-6-phosphate). After successfully searching the database a table with the following columns is displayed:
+The database can be queried for reaction names as well as metabolites. The type of query can be changed by clicking on the dropdown menu. The search is performed with a fuzzy match algorithm, meaning that patterns are matched (Glucose :arrow_right: D-Glucose/Glucose-6-phosphate). After successfully searching the database a table with the following columns is displayed:
 - [Name](/metamdb-docs/database-search#name)
 - [Reaction ID](/metamdb-docs/database-search#reaction-id)
 - [Formula](/metamdb-docs/database-search#formula)
