@@ -42,7 +42,7 @@ Metabolites names, as in the reaction column, can be freely chosen and multiple 
 
 **Metabolite Identifiers** map metabolites to a given reaction and are required if a database atom mapping is wanted. To use metabolite identifiers square brackets can be used `Acetyl-CoA [ACETYL-COA]`. Metabolite identifiers from the above databases can be utilized ([:link: BRENDA](https://www.brenda-enzymes.org/), [:link: KEGG](https://www.genome.jp/kegg/), or [:link: MetaCyc](https://metacyc.org/)) and database specific identifiers can be mixed.
 
-Optional parameters include **Manual Atom Mappings**, which can be used inside parenthesis `Acetyl-CoA (bc)` after the metabolite name. But why would you need manual atom mappings? Lets say you have a theoretical reaction that is not annotated in any database or you want to use a simplified reaction (see below). The manual atom mapping needs to be in the [ABC-Format](/metamdb-docs/abc-format).
+Optional parameters include **Manual Atom Mappings**, which can be used inside parenthesis `Acetyl-CoA (bc)` after the metabolite name. But why would you need manual atom mappings? Lets say you have a theoretical reaction that is not annotated in any database or you want to use a simplified reaction (see below). The manual atom mapping needs to be in the [ABC-Format](/metamdb-docs/getting-started#abc-format).
 
 ![Manual Atom Mapping](../assets/img/v51_manual_aam.png)
 
