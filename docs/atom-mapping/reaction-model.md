@@ -7,7 +7,7 @@ slug: /reaction-model
 
 MetAMDB allows users to upload their own metabolic reaction models. These models allow for an in-depth insight into organism mechanisms, which are utilized in various network simulation techniques. Some of these techniques not only require network-wide reaction knowledge, but also knowledge about their respective atom mappings. MetAMDB makes it possible for users to generate an atom mapping model for their respective reaction models. The following sections will describe how to create such a reaction model and what options are available.
 
-[Download this example model to follow along!](../assets/example_model.csv)
+[Download this example model to follow along!](../assets/example_model.csv) (based on [*Antoniewicz et al.* 2011](https://doi.org/10.1016/j.ymben.2011.07.002))
 
 ![Reaction Model](../assets/img/example_model_screenshot.png)
 
@@ -28,7 +28,7 @@ Each column has special fields and options.
 ### Reaction Name
 ```<ReactionName/Identifier> (<ReactionIdentifier>)```
 
-Reaction names can be freely chosen, but require a reaction identifier from either [:link: BRENDA](https://www.brenda-enzymes.org/), [:link: KEGG](https://www.genome.jp/kegg/), or [:link: MetaCyc](https://metacyc.org/) to get a database atom mapping. `Reaction_identifiers` can either be used as the name itself or can be given in parenthesis behind the name `Name (Reaction_identifier)` .
+Reaction names can be freely chosen, but require a reaction identifier from either [:link: BRENDA](https://www.brenda-enzymes.org/), [:link: KEGG](https://www.genome.jp/kegg/), or [:link: MetaCyc](https://metacyc.org/) to get a database atom mapping. `Reaction_identifiers` can either be used as the name itself or can be given in parenthesis/square brackets behind the name `Name (Reaction_identifier)` .
 
 For example:
 - Reaction1 (F16ALDOLASE-RXN) - **Reaction identifier in parenthesis**
@@ -40,11 +40,13 @@ For example:
 
 Metabolites names, as in the reaction column, can be freely chosen and multiple metabolites are split with a plus sign `+`.
 
-Optional parameters include **Manual Atom Mappings**, which can be used inside parenthesis `Acetyl-CoA (ab)` after the metabolite name. The manual atom mapping needs to be in the abc format.
-
 **Metabolite Identifiers** map metabolites to a given reaction and are required if a database atom mapping is wanted. To use metabolite identifiers square brackets can be used `Acetyl-CoA [ACETYL-COA]`. Metabolite identifiers from the above databases can be utilized ([:link: BRENDA](https://www.brenda-enzymes.org/), [:link: KEGG](https://www.genome.jp/kegg/), or [:link: MetaCyc](https://metacyc.org/)) and database specific identifiers can be mixed.
 
-If a database reaction includes metabolites that should be removed from the atom mapping model the metabolite can be excluded by removing it from the model.
+Optional parameters include **Manual Atom Mappings**, which can be used inside parenthesis `Acetyl-CoA (bc)` after the metabolite name. But why would you need manual atom mappings? Lets say you have a theoretical reaction that is not annotated in any database or you want to use a simplified reaction (see below). The manual atom mapping needs to be in the [ABC-Format](/metamdb-docs/abc-format).
+
+![Manual Atom Mapping](../assets/img/v51_manual_aam.png)
+
+If a database reaction includes metabolites that should be removed from the atom mapping model the metabolite can be excluded by removing it from the model. Some applications could be the removal of cofactors or the simplification of the respective reaction.
 
 For example:
 - Acetyl-CoA (ab) + CO2 (c) - **Metabolites with manual atom mappings**
