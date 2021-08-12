@@ -24,6 +24,11 @@ module.exports = {
           label: "Documentation",
         },
         {
+          to: "api",
+          position: "left",
+          label: "Api",
+        },
+        {
           href: "https://github.com/CollinStark/metamdb",
           label: "GitHub",
           position: "right",
@@ -47,6 +52,22 @@ module.exports = {
         blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
+    [
+      "redocusaurus",
+      {
+        debug: Boolean(process.env.DEBUG || process.env.CI),
+        specs: [
+          {
+            spec: "openapi.yaml",
+            routePath: "/api/",
+          },
+        ],
+        theme: {
+          primaryColor: "#3578e5",
+          redocOptions: { hideDownloadButton: true },
         },
       },
     ],
