@@ -54,11 +54,18 @@ paths:
         "200":
           $ref: "#/components/responses/Reactions"
         "400":
-          description: Invalid ID supplied
+          description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+              examples:
+                /reactions:
+                  value:
+                    message: "The following query parameter/s are required but were not given: [ids]"
+                /reactions?ids=:
+                  value:
+                    message: Ids are required but none were given
   "/reactions/{id}":
     get:
       tags:
@@ -77,7 +84,7 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/Reaction"
-        "400":
+        "404":
           description: Invalid ID supplied
           content:
             application/json:
@@ -113,11 +120,18 @@ paths:
         "200":
           $ref: "#/components/responses/Pathways"
         "400":
-          description: Invalid ID supplied
+          description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+              examples:
+                /pathways:
+                  value:
+                    message: "The following query parameter/s are required but were not given: [ids]"
+                /pathways?ids=:
+                  value:
+                    message: Ids are required but none were given
   "/pathways/{id}":
     get:
       tags:
@@ -136,7 +150,7 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/Pathway"
-        "400":
+        "404":
           description: Invalid ID supplied
           content:
             application/json:
@@ -150,11 +164,13 @@ paths:
       description: |
         Search for MetAMDB reactions of pathways that match a keyword string.
 
+        **Search type:** Change the search type with the `keyword_match` parameter, where `exact` matches strictly and `broad` matches loosely.
+
         **Encode spaces** with the hex code `%20`.
 
         **Field filters:** By default, results are returned when a match is found in any field of the target object type. Searches can be made more specific by specifying a `name` or `source`.
 
-        For example: The query `q=name:1500%20source:kegg&type=reaction` returns only reactions with the identifier "1500" from the source "kegg".
+        For example: The query `q=name:1500%20source:kegg&type=reaction&keyword_match=broad` returns only reactions with the identifier "1500" from the source "kegg".
       operationId: getSearch
       parameters:
         - name: q
@@ -172,6 +188,7 @@ paths:
           required: true
           schema:
             type: string
+            enum: [reaction, pathway]
         - name: limit
           in: path
           required: false
@@ -180,7 +197,7 @@ paths:
             format: int64
             minimum: 1
             maximum: 50
-          default: 20
+            default: 20
           description: Maximum number of results to return.
         - name: offset
           in: path
@@ -188,18 +205,36 @@ paths:
           schema:
             type: integer
             format: int64
-          default: 0
+            default: 0
           description: The index of the first result to return.
+        - name: keyword_match
+          in: path
+          required: false
+          schema:
+            type: string
+            enum: [exact, broad]
+            default: exact
+          description: The type of search to employ.
 
       responses:
         "200":
           $ref: "#/components/responses/Search"
         "400":
-          description: Bad query supplied
+          description: Bad Request
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+              examples:
+                /search?q=pw_gly&type=abc:
+                  value:
+                    message: "Bad search type field abc"
+                /search?q=pw_gly:
+                  value:
+                    message: Missing parameter type
+                /search:
+                  value:
+                    message: No search query
 
 components:
   responses:
@@ -260,7 +295,261 @@ components:
             oneOf:
               - $ref: "#/components/schemas/PathwaySearch"
               - $ref: "#/components/schemas/ReactionSearch"
+          examples:
+            q=name:1500%20source:kegg&type=reaction&keyword_match=broad:
+              $ref: "#/components/examples/reaction-search"
+            q=name:PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY&type=pathway:
+              $ref: "#/components/examples/pathway-search"
   examples:
+    pathway-search:
+      value:
+        pathways:
+          href: https://metamdb.tu-bs.de/api/search?q=name:PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY&type=pathway&offset=0&limit=20&keyword_match=exact
+          items:
+            - externalUrls:
+                metamdb: https://metamdb.tu-bs.de/pathway/2
+              href: https://metamdb.tu-bs.de/api/pathways/2
+              id: 2
+              name: protocatechuate degradation II (ortho-cleavage pathway)
+              reactions:
+                - externalUrls:
+                    img: https://metamdb.tu-bs.de/img/aam/55.svg
+                    metamdb: https://metamdb.tu-bs.de/reaction/55
+                  formula: H2O + (4,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-oxoadipate
+                  href: https://metamdb.tu-bs.de/api/reactions/55
+                  id: 55
+                  identifiers:
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BR11711
+                    - source:
+                        id: 2
+                        name: KEGG
+                      databaseIdentifier: R02991
+                    - source:
+                        id: 3
+                        name: MetaCyc
+                      databaseIdentifier: 3-OXOADIPATE-ENOL-LACTONASE-RXN
+                  rxnFile: "$RXN\n\n  EC-BLAST     55\n\n  2  1\n$MOL\n{\"n\": \"5-oxo-4,5-dihydrofuran 2-acetate\", \"i\": 6444, \"r\": \"s\", \"p\": 1}\n..."
+                  type: reaction
+                  updated: true
+                  updatedBy: 1
+                  updatedOn: 2020-04-08T14:40:21
+                - externalUrls:
+                    img: https://metamdb.tu-bs.de/img/aam/416.svg
+                    metamdb: https://metamdb.tu-bs.de/reaction/416
+                  formula: (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-carboxy-cis,cis-muconate
+                  href: https://metamdb.tu-bs.de/api/reactions/416
+                  id: 416
+                  identifiers:
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BR260
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BR263
+                    - source:
+                        id: 2
+                        name: KEGG
+                      databaseIdentifier: R03307
+                    - source:
+                        id: 2
+                        name: KEGG
+                      databaseIdentifier: R03308
+                    - source:
+                        id: 3
+                        name: MetaCyc
+                      databaseIdentifier: 5.5.1.2-RXN
+                    - source:
+                        id: 3
+                        name: MetaCyc
+                      databaseIdentifier: CARBOXY-CISCIS-MUCONATE-CYCLASE-RXN
+                  rxnFile: "$RXN\n\n  EC-BLAST     416\n\n  1  1\n$MOL\n{\"n\": \"2-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 23805, \"r\": \"s\", \"p\": 1}\n..."
+                  type: reaction
+                  updated: false
+                  updatedBy: null
+                  updatedOn: 2020-04-08T14:23:24
+                - externalUrls:
+                    img: https://metamdb.tu-bs.de/img/aam/835.svg
+                    metamdb: https://metamdb.tu-bs.de/reaction/835
+                  formula: H+ + (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = CO2 + (4,5-dihydro-5-oxofuran-2-yl)-acetate
+                  href: https://metamdb.tu-bs.de/api/reactions/835
+                  id: 835
+                  identifiers:
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BR3361
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BS18492
+                    - source:
+                        id: 2
+                        name: KEGG
+                      databaseIdentifier: R03470
+                    - source:
+                        id: 3
+                        name: MetaCyc
+                      databaseIdentifier: 4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN
+                  rxnFile: "$RXN\n\n  EC-BLAST     835\n\n  1  2\n$MOL\n{\"n\": \"3-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 2299, \"r\": \"s\", \"p\": 1}\n..."
+                  type: reaction
+                  updated: true
+                  updatedBy: 1
+                  updatedOn: 2020-04-29T12:49:47
+                - externalUrls:
+                    img: https://metamdb.tu-bs.de/img/aam/1286.svg
+                    metamdb: https://metamdb.tu-bs.de/reaction/1286
+                  formula: oxygen + protocatechuate = H+ + 3-carboxy-cis,cis-muconate
+                  href: https://metamdb.tu-bs.de/api/reactions/1286
+                  id: 1286
+                  identifiers:
+                    - source:
+                        id: 1
+                        name: BRENDA
+                      databaseIdentifier: BR40477
+                    - source:
+                        id: 2
+                        name: KEGG
+                      databaseIdentifier: R01631
+                    - source:
+                        id: 3
+                        name: MetaCyc
+                      databaseIdentifier: PROTOCATECHUATE-34-DIOXYGENASE-RXN
+                  rxnFile: "$RXN\n\n  EC-BLAST     1286\n\n  2  1\n$MOL\n{\"n\": \"O2\", \"i\": 16619, \"r\": \"s\", \"p\": 1}\n..."
+                  type: reaction
+                  updated: true
+                  updatedBy: 1
+                  updatedOn: 2020-04-08T14:21:47
+              source: metacyc
+              sourceId: PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY
+              type: pathway
+          limit: 20
+          next: null
+          offset: 0
+          previous: null
+          total: 1
+    reaction-search:
+      value:
+        reactions:
+          href: https://metamdb.tu-bs.de/api/search?q=name:1500 source:kegg&type=reaction&offset=0&limit=20&keyword_match=broad
+          items:
+            - compounds:
+                - compound:
+                    id: 48375
+                    name: a (2R,3R)-dihydroflavonol
+                  position: 3
+                  quantity: 1
+                  reactant: product
+                - compound:
+                    id: 48378
+                    name: a (2R,3S,4S)-leucoanthocyanidin
+                  position: 1
+                  quantity: 1
+                  reactant: substrate
+                - compound:
+                    id: 61917
+                    name: NADPH
+                  position: 4
+                  quantity: 1
+                  reactant: product
+                - compound:
+                    id: 61920
+                    name: NADP+
+                  position: 2
+                  quantity: 1
+                  reactant: substrate
+                - compound:
+                    id: 86181
+                    name: H+
+                  position: 5
+                  quantity: 1
+                  reactant: product
+              externalUrls:
+                img: https://metamdb.tu-bs.de/img/aam/853.svg
+                metamdb: https://metamdb.tu-bs.de/reaction/853
+              formula: (2R,3S,4S)-leucoanthocyanidin + NADP+ = (2R,3R)-dihydroflavonol + NADPH + H+
+              href: https://metamdb.tu-bs.de/api/reactions/853
+              id: 853
+              identifiers:
+                - source:
+                    id: 1
+                    name: BRENDA
+                  databaseIdentifier: BR33673
+                - source:
+                    id: 2
+                    name: KEGG
+                  databaseIdentifier: R11500
+                - source:
+                    id: 3
+                    name: MetaCyc
+                  databaseIdentifier: RXN-17678
+              rxnFile: "$RXN\n\n  EC-BLAST     853\n\n  2  3\n$MOL\n{\"n\": \"NADP+\", \"i\": 61920, \"r\": \"s\", \"p\": 1}\n..."
+              type: reaction
+              updated: false
+              updatedBy: null
+              updatedOn: null
+            - compounds:
+                - compound:
+                    id: 41211
+                    name: UDP
+                  position: 3
+                  quantity: 1
+                  reactant: product
+                - compound:
+                    id: 48659
+                    name: N-acylsphingosine
+                  position: 2
+                  quantity: 1
+                  reactant: substrate
+                - compound:
+                    id: 48661
+                    name: glucosylceramide
+                  position: 4
+                  quantity: 1
+                  reactant: product
+                - compound:
+                    id: 55485
+                    name: UDP-galactose
+                  position: 1
+                  quantity: 1
+                  reactant: substrate
+              externalUrls:
+                img: https://metamdb.tu-bs.de/img/aam/5318.svg
+                metamdb: https://metamdb.tu-bs.de/reaction/5318
+              formula: UDP-alpha-D-galactose + sphingosine ceramide = beta-D-galactosyl-N-acylsphingosine + UDP + H+
+              href: https://metamdb.tu-bs.de/api/reactions/5318
+              id: 5318
+              identifiers:
+                - source:
+                    id: 1
+                    name: BRENDA
+                  databaseIdentifier: BS322811
+                - source:
+                    id: 2
+                    name: KEGG
+                  databaseIdentifier: R01500
+                - source:
+                    id: 2
+                    name: KEGG
+                  databaseIdentifier: R06277
+                - source:
+                    id: 3
+                    name: MetaCyc
+                  databaseIdentifier: 2.4.1.47-RXN
+              rxnFile: "$RXN\n\n  EC-BLAST     5318\n\n  2  2\n$MOL\n{\"n\": \"N-acylsphingosine\", \"i\": 48659, \"r\": \"s\", \"p\": 0}\n..."
+              type: reaction
+              updated: false
+              updatedBy: null
+              updatedOn: 2020-11-20T14:17:57
+          limit: 20
+          next: null
+          offset: 0
+          previous: null
+          total: 2
     pathways-one-value:
       value:
         pathways:
@@ -1375,10 +1664,7 @@ components:
           type: array
           items:
             type: object
-            properties:
-              reaction:
-                type: object
-                $ref: "#/components/schemas/PathwayReaction"
+            $ref: "#/components/schemas/PathwayReaction"
         source:
           type: string
           description: Database source of pathway
