@@ -104,6 +104,11 @@ paths:
               type: integer
               format: int64
           required: true
+          examples:
+            one-id:
+              value: 1
+            two-ids:
+              value: 1,2
       responses:
         "200":
           $ref: "#/components/responses/Pathways"
@@ -204,12 +209,24 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Pathway"
+          examples:
+            /pathways/2:
+              $ref: "#/components/examples/pathway-two"
+            /pathways/5:
+              $ref: "#/components/examples/pathway-10"
     Pathways:
       description: Successful operation
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/Pathways"
+          examples:
+            /pathways?ids=2:
+              $ref: "#/components/examples/pathways-one-value"
+            /pathways?ids=2,5:
+              $ref: "#/components/examples/pathways-two-value"
+            /pathways?ids=2,abc:
+              $ref: "#/components/examples/pathways-one-value-one-bad"
     Reaction:
       description: Successful operation
       content:
@@ -244,6 +261,618 @@ components:
               - $ref: "#/components/schemas/PathwaySearch"
               - $ref: "#/components/schemas/ReactionSearch"
   examples:
+    pathways-one-value:
+      value:
+        pathways:
+          - externalUrls:
+              metamdb: https://metamdb.tu-bs.de/pathway/2
+            href: https://metamdb.tu-bs.de/api/pathways/2
+            id: 2
+            name: protocatechuate degradation II (ortho-cleavage pathway)
+            reactions:
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/55.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/55
+                formula: H2O + (4,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-oxoadipate
+                href: https://metamdb.tu-bs.de/api/reactions/55
+                id: 55
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR11711
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R02991
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 3-OXOADIPATE-ENOL-LACTONASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     55\n\n  2  1\n$MOL\n{\"n\": \"5-oxo-4,5-dihydrofuran 2-acetate\", \"i\": 6444, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:40:21
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/416.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/416
+                formula: (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/416
+                id: 416
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR260
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR263
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03307
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03308
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 5.5.1.2-RXN
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: CARBOXY-CISCIS-MUCONATE-CYCLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     416\n\n  1  1\n$MOL\n{\"n\": \"2-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 23805, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: false
+                updatedBy: null
+                updatedOn: 2020-04-08T14:23:24
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/835.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/835
+                formula: H+ + (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = CO2 + (4,5-dihydro-5-oxofuran-2-yl)-acetate
+                href: https://metamdb.tu-bs.de/api/reactions/835
+                id: 835
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR3361
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BS18492
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03470
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     835\n\n  1  2\n$MOL\n{\"n\": \"3-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 2299, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-29T12:49:47
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/1286.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/1286
+                formula: oxygen + protocatechuate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/1286
+                id: 1286
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR40477
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R01631
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: PROTOCATECHUATE-34-DIOXYGENASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     1286\n\n  2  1\n$MOL\n{\"n\": \"O2\", \"i\": 16619, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:21:47
+            source: metacyc
+            sourceId: PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY
+            type: pathway
+    pathways-two-value:
+      value:
+        pathways:
+          - externalUrls:
+              metamdb: https://metamdb.tu-bs.de/pathway/2
+            href: https://metamdb.tu-bs.de/api/pathways/2
+            id: 2
+            name: protocatechuate degradation II (ortho-cleavage pathway)
+            reactions:
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/55.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/55
+                formula: H2O + (4,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-oxoadipate
+                href: https://metamdb.tu-bs.de/api/reactions/55
+                id: 55
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR11711
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R02991
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 3-OXOADIPATE-ENOL-LACTONASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     55\n\n  2  1\n$MOL\n{\"n\": \"5-oxo-4,5-dihydrofuran 2-acetate\", \"i\": 6444, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:40:21
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/416.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/416
+                formula: (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/416
+                id: 416
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR260
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR263
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03307
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03308
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 5.5.1.2-RXN
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: CARBOXY-CISCIS-MUCONATE-CYCLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     416\n\n  1  1\n$MOL\n{\"n\": \"2-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 23805, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: false
+                updatedBy: null
+                updatedOn: 2020-04-08T14:23:24
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/835.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/835
+                formula: H+ + (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = CO2 + (4,5-dihydro-5-oxofuran-2-yl)-acetate
+                href: https://metamdb.tu-bs.de/api/reactions/835
+                id: 835
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR3361
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BS18492
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03470
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     835\n\n  1  2\n$MOL\n{\"n\": \"3-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 2299, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-29T12:49:47
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/1286.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/1286
+                formula: oxygen + protocatechuate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/1286
+                id: 1286
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR40477
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R01631
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: PROTOCATECHUATE-34-DIOXYGENASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     1286\n\n  2  1\n$MOL\n{\"n\": \"O2\", \"i\": 16619, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:21:47
+            source: metacyc
+            sourceId: PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY
+            type: pathway
+          - externalUrls:
+              metamdb: https://metamdb.tu-bs.de/pathway/5
+            href: https://metamdb.tu-bs.de/api/pathways/5
+            id: 5
+            name: flavin biosynthesis IV (mammalian)
+            reactions:
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/1878.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/1878
+                formula: riboflavin + ATP = FMN + ADP + H+
+                href: https://metamdb.tu-bs.de/api/reactions/1878
+                id: 1878
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR47765
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R00549
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: RIBOFLAVINKIN-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     1878\n\n  2  2\n$MOL\n{\"n\": \"ATP\", \"i\": 22420, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-05-25T15:26:18
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/1960.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/1960
+                formula: FMN + ATP + H+ = FAD + diphosphate
+                href: https://metamdb.tu-bs.de/api/reactions/1960
+                id: 1960
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR47867
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R00161
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: FADSYN-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     1960\n\n  2  2\n$MOL\n{\"n\": \"ATP\", \"i\": 22420, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-08-11T10:50:35
+            source: metacyc
+            sourceId: PWY66-366
+            type: pathway
+    pathway-two:
+      value:
+        externalUrls:
+          metamdb: https://metamdb.tu-bs.de/pathway/2
+        href: https://metamdb.tu-bs.de/api/pathways/2
+        id: 2
+        name: protocatechuate degradation II (ortho-cleavage pathway)
+        reactions:
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/55.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/55
+            formula: H2O + (4,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-oxoadipate
+            href: https://metamdb.tu-bs.de/api/reactions/55
+            id: 55
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR11711
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R02991
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: 3-OXOADIPATE-ENOL-LACTONASE-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     55\n\n  2  1\n$MOL\n{\"n\": \"5-oxo-4,5-dihydrofuran 2-acetate\", \"i\": 6444, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy: 1
+            updatedOn: 2020-04-08T14:40:21
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/416.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/416
+            formula: (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-carboxy-cis,cis-muconate
+            href: https://metamdb.tu-bs.de/api/reactions/416
+            id: 416
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR260
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR263
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R03307
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R03308
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: 5.5.1.2-RXN
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: CARBOXY-CISCIS-MUCONATE-CYCLASE-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     416\n\n  1  1\n$MOL\n{\"n\": \"2-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 23805, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: false
+            updatedBy: null
+            updatedOn: 2020-04-08T14:23:24
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/835.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/835
+            formula: H+ + (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = CO2 + (4,5-dihydro-5-oxofuran-2-yl)-acetate
+            href: https://metamdb.tu-bs.de/api/reactions/835
+            id: 835
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR3361
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BS18492
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R03470
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: 4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     835\n\n  1  2\n$MOL\n{\"n\": \"3-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 2299, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy: 1
+            updatedOn: 2020-04-29T12:49:47
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/1286.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/1286
+            formula: oxygen + protocatechuate = H+ + 3-carboxy-cis,cis-muconate
+            href: https://metamdb.tu-bs.de/api/reactions/1286
+            id: 1286
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR40477
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R01631
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: PROTOCATECHUATE-34-DIOXYGENASE-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     1286\n\n  2  1\n$MOL\n{\"n\": \"O2\", \"i\": 16619, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy: 1
+            updatedOn: 2020-04-08T14:21:47
+        source: metacyc
+        sourceId: PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY
+        type: pathway
+    pathway-10:
+      value:
+        externalUrls:
+          metamdb: https://metamdb.tu-bs.de/pathway/5
+        href: https://metamdb.tu-bs.de/api/pathways/5
+        id: 5
+        name: flavin biosynthesis IV (mammalian)
+        reactions:
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/1878.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/1878
+            formula: riboflavin + ATP = FMN + ADP + H+
+            href: https://metamdb.tu-bs.de/api/reactions/1878
+            id: 1878
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR47765
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R00549
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: RIBOFLAVINKIN-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     1878\n\n  2  2\n$MOL\n{\"n\": \"ATP\", \"i\": 22420, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy: 1
+            updatedOn: 2020-05-25T15:26:18
+          - externalUrls:
+              img: https://metamdb.tu-bs.de/img/aam/1960.svg
+              metamdb: https://metamdb.tu-bs.de/reaction/1960
+            formula: FMN + ATP + H+ = FAD + diphosphate
+            href: https://metamdb.tu-bs.de/api/reactions/1960
+            id: 1960
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR47867
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R00161
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: FADSYN-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     1960\n\n  2  2\n$MOL\n{\"n\": \"ATP\", \"i\": 22420, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy: 1
+            updatedOn: 2020-08-11T10:50:35
+        source: metacyc
+        sourceId: PWY66-366
+        type: pathway
+    pathways-one-value-one-bad:
+      value:
+        pathways:
+          - externalUrls:
+              metamdb: https://metamdb.tu-bs.de/pathway/2
+            href: https://metamdb.tu-bs.de/api/pathways/2
+            id: 2
+            name: protocatechuate degradation II (ortho-cleavage pathway)
+            reactions:
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/55.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/55
+                formula: H2O + (4,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-oxoadipate
+                href: https://metamdb.tu-bs.de/api/reactions/55
+                id: 55
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR11711
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R02991
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 3-OXOADIPATE-ENOL-LACTONASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     55\n\n  2  1\n$MOL\n{\"n\": \"5-oxo-4,5-dihydrofuran 2-acetate\", \"i\": 6444, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:40:21
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/416.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/416
+                formula: (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/416
+                id: 416
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR260
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR263
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03307
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03308
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 5.5.1.2-RXN
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: CARBOXY-CISCIS-MUCONATE-CYCLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     416\n\n  1  1\n$MOL\n{\"n\": \"2-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 23805, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: false
+                updatedBy: null
+                updatedOn: 2020-04-08T14:23:24
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/835.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/835
+                formula: H+ + (2-carboxy-2,5-dihydro-5-oxofuran-2-yl)-acetate = CO2 + (4,5-dihydro-5-oxofuran-2-yl)-acetate
+                href: https://metamdb.tu-bs.de/api/reactions/835
+                id: 835
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR3361
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BS18492
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R03470
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: 4-CARBOXYMUCONOLACTONE-DECARBOXYLASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     835\n\n  1  2\n$MOL\n{\"n\": \"3-carboxy-2,5-dihydro-5-oxofuran-2-aceta\", \"i\": 2299, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-29T12:49:47
+              - externalUrls:
+                  img: https://metamdb.tu-bs.de/img/aam/1286.svg
+                  metamdb: https://metamdb.tu-bs.de/reaction/1286
+                formula: oxygen + protocatechuate = H+ + 3-carboxy-cis,cis-muconate
+                href: https://metamdb.tu-bs.de/api/reactions/1286
+                id: 1286
+                identifiers:
+                  - source:
+                      id: 1
+                      name: BRENDA
+                    databaseIdentifier: BR40477
+                  - source:
+                      id: 2
+                      name: KEGG
+                    databaseIdentifier: R01631
+                  - source:
+                      id: 3
+                      name: MetaCyc
+                    databaseIdentifier: PROTOCATECHUATE-34-DIOXYGENASE-RXN
+                rxnFile: "$RXN\n\n  EC-BLAST     1286\n\n  2  1\n$MOL\n{\"n\": \"O2\", \"i\": 16619, \"r\": \"s\", \"p\": 1}\n..."
+                type: reaction
+                updated: true
+                updatedBy: 1
+                updatedOn: 2020-04-08T14:21:47
+            source: metacyc
+            sourceId: PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY
+            type: pathway
+          - null
     reaction-1916:
       value:
         compounds:
@@ -733,15 +1362,15 @@ components:
           type: string
           description: Link to api call
           example: "https://metamdb.tu-bs.de/api/pathways/2"
-        name:
-          type: string
-          description: Name of the pathway
-          example: "protocatechuate degradation II (ortho-cleavage pathway)"
-        pw_id:
+        id:
           type: integer
           format: int64
           example: 2
           description: Pathway ID
+        name:
+          type: string
+          description: Name of the pathway
+          example: "protocatechuate degradation II (ortho-cleavage pathway)"
         reactions:
           type: array
           items:
@@ -749,12 +1378,12 @@ components:
             properties:
               reaction:
                 type: object
-                $ref: "#/components/schemas/Reaction"
+                $ref: "#/components/schemas/PathwayReaction"
         source:
           type: string
           description: Database source of pathway
           example: metacyc
-        source_id:
+        sourceId:
           type: string
           description: ID of pathway in source database
           example: "PROTOCATECHUATE-ORTHO-CLEAVAGE-PWY"
@@ -924,6 +1553,88 @@ components:
               type: string
               example: 0000-0002-2938-9940
               description: ORCID of the curator
+        updatedOn:
+          type: string
+          example: 2020-05-11T12:43:17
+          description: Date on which reaction was updated
+
+    PathwayReaction:
+      description: A representation of a reaction
+      type: object
+      properties:
+        externalUrls:
+          type: object
+          properties:
+            metamdb:
+              type: string
+              description: Link to MetAMDB reaction
+              example: "https://metamdb.tu-bs.de/reaction/2"
+            img:
+              type: string
+              description: Link to reaction image
+              example: "https://metamdb.tu-bs.de/img/aam/2.svg"
+        formula:
+          type: string
+          example: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
+          description: Formula of the reaction
+        href:
+          type: string
+          description: Link to api call
+          example: "https://metamdb.tu-bs.de/api/reactions/2"
+        id:
+          type: integer
+          format: int64
+          example: 2
+          description: Reaction ID
+        identifiers:
+          type: array
+          example:
+            - source:
+                id: 1
+                name: BRENDA
+              databaseIdentifier: BR101
+            - source:
+                id: 2
+                name: KEGG
+              databaseIdentifier: R02473
+            - source:
+                id: 3
+                name: MetaCyc
+              databaseIdentifier: PANTOATE-BETA-ALANINE-LIG-RXN
+          items:
+            type: object
+            properties:
+              source:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    description: Identifier of the source database, with `1=BRENDA`, `2=KEGG`, and `3=MetaCyc`
+                  name:
+                    type: string
+                    description: Name of the source database.
+              databaseIdentifier:
+                type: string
+                description: Reaction identifier in the source database.
+        rxnFile:
+          type: string
+          format: binary
+          description: RXN file of reactions atom mapping
+          example: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
+        type:
+          type: string
+          default: reaction
+          description: Type of return
+        updated:
+          type: boolean
+          example: true
+          description: Update status
+        updatedBy:
+          type: integer
+          format: int64
+          example: 1
+          description: ID of the curator
         updatedOn:
           type: string
           example: 2020-05-11T12:43:17
