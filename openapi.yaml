@@ -45,6 +45,11 @@ paths:
               type: integer
               format: int64
           required: true
+          examples:
+            one-id:
+              value: 1
+            two-ids:
+              value: 1,2
       responses:
         "200":
           $ref: "#/components/responses/Reactions"
@@ -211,12 +216,25 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Reaction"
+          examples:
+            /reactions/2:
+              $ref: "#/components/examples/reaction-two"
+            /reactions/1916:
+              $ref: "#/components/examples/reaction-1916"
     Reactions:
       description: Successful operation
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/Reactions"
+          examples:
+            /reactions?ids=2:
+              $ref: "#/components/examples/reactions-one-value"
+            /reactions?ids=2,1916:
+              $ref: "#/components/examples/reactions-two-value"
+            /reactions?ids=2,abc:
+              $ref: "#/components/examples/reactions-one-value-one-bad"
+
     Search:
       description: Successful operation
       content:
@@ -225,6 +243,388 @@ components:
             oneOf:
               - $ref: "#/components/schemas/PathwaySearch"
               - $ref: "#/components/schemas/ReactionSearch"
+  examples:
+    reaction-1916:
+      value:
+        compounds:
+          - compound:
+              id: 9251
+              name: phosphate
+            position: 3
+            quantity: 1
+            reactant: product
+          - compound:
+              id: 45724
+              name: D-fructose 6-phosphate
+            position: 2
+            quantity: 1
+            reactant: substrate
+          - compound:
+              id: 60639
+              name: D-fructose 1,6-bisphosphate
+            position: 4
+            quantity: 1
+            reactant: product
+          - compound:
+              id: 75289
+              name: diphosphate
+            position: 1
+            quantity: 1
+            reactant: substrate
+        externalUrls:
+          metamdb: "https://metamdb.tu-bs.de/reaction/1916"
+          img: "https://metamdb.tu-bs.de/img/aam/1916.svg"
+        formula: "beta-D-fructofuranose 6-phosphate + diphosphate = H+ + phosphate + beta-D-fructose 1,6-bisphosphate"
+        href: "https://metamdb.tu-bs.de/api/reactions/1916"
+        id: 1916
+        identifiers:
+          - source:
+              id: 1
+              name: BRENDA
+            databaseIdentifier: BR47815
+          - source:
+              id: 2
+              name: KEGG
+            databaseIdentifier: R00764
+          - source:
+              id: 2
+              name: KEGG
+            databaseIdentifier: R02073
+          - source:
+              id: 3
+              name: MetaCyc
+            databaseIdentifier: 2.7.1.90-RXN
+        rxnFile: "$RXN\n\n  EC-BLAST     1916\n\n  2  2\n$MOL\n{\"n\": \"D-fructose 6-phosphate\", \"i\": 45724, \"r\": \"s\", \"p\": 0}\n..."
+        type: reaction
+        updated: true
+        updatedBy:
+          id: 1
+          name: Collin
+          orcid: 0000-0002-2938-9940
+        updatedOn: 2021-10-19T15:40:44
+    reaction-two:
+      value:
+        compounds:
+          - compound:
+              id: 10213
+              name: (R)-pantoate
+            position: 2
+            quantity: 1
+            reactant: substrate
+          - compound:
+              id: 10215
+              name: (R)-pantothenate
+            position: 6
+            quantity: 1
+            reactant: product
+          - compound:
+              id: 22420
+              name: ATP
+            position: 1
+            quantity: 1
+            reactant: substrate
+          - compound:
+              id: 31197
+              name: beta-Alanine
+            position: 3
+            quantity: 1
+            reactant: substrate
+          - compound:
+              id: 31336
+              name: AMP
+            position: 4
+            quantity: 1
+            reactant: product
+          - compound:
+              id: 75289
+              name: diphosphate
+            position: 5
+            quantity: 1
+            reactant: product
+        externalUrls:
+          metamdb: "https://metamdb.tu-bs.de/reaction/2"
+          img: "https://metamdb.tu-bs.de/img/aam/2.svg"
+        formula: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
+        href: "https://metamdb.tu-bs.de/api/reactions/2"
+        id: 2
+        identifiers:
+          - source:
+              id: 1
+              name: BRENDA
+            databaseIdentifier: BR101
+          - source:
+              id: 2
+              name: KEGG
+            databaseIdentifier: R02473
+          - source:
+              id: 3
+              name: MetaCyc
+            databaseIdentifier: PANTOATE-BETA-ALANINE-LIG-RXN
+        rxnFile: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
+        type: reaction
+        updated: true
+        updatedBy:
+          id: 1
+          name: Collin
+          orcid: 0000-0002-2938-9940
+        updatedOn: 2020-05-11T12:43:17
+    reactions-one-value:
+      value:
+        reactions:
+          - compounds:
+              - compound:
+                  id: 10213
+                  name: (R)-pantoate
+                position: 2
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 10215
+                  name: (R)-pantothenate
+                position: 6
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 22420
+                  name: ATP
+                position: 1
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31197
+                  name: beta-Alanine
+                position: 3
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31336
+                  name: AMP
+                position: 4
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 75289
+                  name: diphosphate
+                position: 5
+                quantity: 1
+                reactant: product
+            externalUrls:
+              metamdb: "https://metamdb.tu-bs.de/reaction/2"
+              img: "https://metamdb.tu-bs.de/img/aam/2.svg"
+            formula: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
+            href: "https://metamdb.tu-bs.de/api/reactions/2"
+            id: 2
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR101
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R02473
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: PANTOATE-BETA-ALANINE-LIG-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy:
+              id: 1
+              name: Collin
+              orcid: 0000-0002-2938-9940
+            updatedOn: 2020-05-11T12:43:17
+    reactions-two-value:
+      value:
+        reactions:
+          - compounds:
+              - compound:
+                  id: 10213
+                  name: (R)-pantoate
+                position: 2
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 10215
+                  name: (R)-pantothenate
+                position: 6
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 22420
+                  name: ATP
+                position: 1
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31197
+                  name: beta-Alanine
+                position: 3
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31336
+                  name: AMP
+                position: 4
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 75289
+                  name: diphosphate
+                position: 5
+                quantity: 1
+                reactant: product
+            externalUrls:
+              metamdb: "https://metamdb.tu-bs.de/reaction/2"
+              img: "https://metamdb.tu-bs.de/img/aam/2.svg"
+            formula: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
+            href: "https://metamdb.tu-bs.de/api/reactions/2"
+            id: 2
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR101
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R02473
+              - source:
+                  id: 3
+                  name: MetaCyc
+            rxnFile: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy:
+              id: 1
+              name: Collin
+              orcid: 0000-0002-2938-9940
+            updatedOn: 2020-05-11T12:43:17
+          - compounds:
+              - compound:
+                  id: 9251
+                  name: phosphate
+                position: 3
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 45724
+                  name: D-fructose 6-phosphate
+                position: 2
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 60639
+                  name: D-fructose 1,6-bisphosphate
+                position: 4
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 75289
+                  name: diphosphate
+                position: 1
+                quantity: 1
+                reactant: substrate
+            externalUrls:
+              metamdb: "https://metamdb.tu-bs.de/reaction/1916"
+              img: "https://metamdb.tu-bs.de/img/aam/1916.svg"
+            formula: "beta-D-fructofuranose 6-phosphate + diphosphate = H+ + phosphate + beta-D-fructose 1,6-bisphosphate"
+            href: "https://metamdb.tu-bs.de/api/reactions/1916"
+            id: 1916
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR47815
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R00764
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R02073
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: 2.7.1.90-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     1916\n\n  2  2\n$MOL\n{\"n\": \"D-fructose 6-phosphate\", \"i\": 45724, \"r\": \"s\", \"p\": 0}\n..."
+            type: reaction
+            updated: true
+            updatedBy:
+              id: 1
+              name: Collin
+              orcid: 0000-0002-2938-9940
+            updatedOn: 2021-10-19T15:40:44
+    reactions-one-value-one-bad:
+      value:
+        reactions:
+          - compounds:
+              - compound:
+                  id: 10213
+                  name: (R)-pantoate
+                position: 2
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 10215
+                  name: (R)-pantothenate
+                position: 6
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 22420
+                  name: ATP
+                position: 1
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31197
+                  name: beta-Alanine
+                position: 3
+                quantity: 1
+                reactant: substrate
+              - compound:
+                  id: 31336
+                  name: AMP
+                position: 4
+                quantity: 1
+                reactant: product
+              - compound:
+                  id: 75289
+                  name: diphosphate
+                position: 5
+                quantity: 1
+                reactant: product
+            externalUrls:
+              metamdb: "https://metamdb.tu-bs.de/reaction/2"
+              img: "https://metamdb.tu-bs.de/img/aam/2.svg"
+            formula: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
+            href: "https://metamdb.tu-bs.de/api/reactions/2"
+            id: 2
+            identifiers:
+              - source:
+                  id: 1
+                  name: BRENDA
+                databaseIdentifier: BR101
+              - source:
+                  id: 2
+                  name: KEGG
+                databaseIdentifier: R02473
+              - source:
+                  id: 3
+                  name: MetaCyc
+                databaseIdentifier: PANTOATE-BETA-ALANINE-LIG-RXN
+            rxnFile: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
+            type: reaction
+            updated: true
+            updatedBy:
+              id: 1
+              name: Collin
+              orcid: 0000-0002-2938-9940
+            updatedOn: 2020-05-11T12:43:17
+          - null
   schemas:
     Error:
       type: object
@@ -322,7 +722,7 @@ components:
       description: A representation of a pathway
       type: object
       properties:
-        external_urls:
+        externalUrls:
           type: object
           properties:
             metamdb:
@@ -376,7 +776,71 @@ components:
       description: A representation of a reaction
       type: object
       properties:
-        external_urls:
+        compounds:
+          type: array
+          example:
+            - compound:
+                id: 10213
+                name: (R)-pantoate
+              position: 2
+              quantity: 1
+              reactant: substrate
+            - compound:
+                id: 10215
+                name: (R)-pantothenate
+              position: 6
+              quantity: 1
+              reactant: product
+            - compound:
+                id: 22420
+                name: ATP
+              position: 1
+              quantity: 1
+              reactant: substrate
+            - compound:
+                id: 31197
+                name: beta-Alanine
+              position: 3
+              quantity: 1
+              reactant: substrate
+            - compound:
+                id: 31336
+                name: AMP
+              position: 4
+              quantity: 1
+              reactant: product
+            - compound:
+                id: 75289
+                name: diphosphate
+              position: 5
+              quantity: 1
+              reactant: product
+          items:
+            type: object
+            properties:
+              compound:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    description: ID of the compound
+                  name:
+                    type: string
+                    description: Name of the compound
+              position:
+                type: integer
+                format: int64
+                description: Position of the compound in said reaction
+              quantity:
+                type: integer
+                format: int64
+                description: Quantity of the compound
+              reactant:
+                type: string
+                enum: [substrate, product]
+                description: Reactant status of compound for the reaction
+        externalUrls:
           type: object
           properties:
             metamdb:
@@ -387,11 +851,6 @@ components:
               type: string
               description: Link to reaction image
               example: "https://metamdb.tu-bs.de/img/aam/2.svg"
-        file:
-          type: string
-          format: binary
-          description: RXN file of reactions atom mapping
-          example: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
         formula:
           type: string
           example: "beta-alanine + (R)-pantoate + ATP = H+ + (R)-pantothenate + diphosphate + AMP"
@@ -407,6 +866,19 @@ components:
           description: Reaction ID
         identifiers:
           type: array
+          example:
+            - source:
+                id: 1
+                name: BRENDA
+              databaseIdentifier: BR101
+            - source:
+                id: 2
+                name: KEGG
+              databaseIdentifier: R02473
+            - source:
+                id: 3
+                name: MetaCyc
+              databaseIdentifier: PANTOATE-BETA-ALANINE-LIG-RXN
           items:
             type: object
             properties:
@@ -416,16 +888,18 @@ components:
                   id:
                     type: integer
                     format: int64
-                    example: 1
-                    description: Identifier of the source database, with `1=BRENDA`, `2=KEGG`, and `3=MetaCyc`.
+                    description: Identifier of the source database, with `1=BRENDA`, `2=KEGG`, and `3=MetaCyc`
                   name:
                     type: string
-                    example: BRENDA
                     description: Name of the source database.
               databaseIdentifier:
                 type: string
-                example: BS372665
                 description: Reaction identifier in the source database.
+        rxnFile:
+          type: string
+          format: binary
+          description: RXN file of reactions atom mapping
+          example: "$RXN\n\n  EC-BLAST     2\n\n  3  3\n$MOL\n{\"n\": \"(R)-pantoate\", \"i\": 10213, \"r\": \"s\", \"p\": 1}\n..."
         type:
           type: string
           default: reaction
@@ -435,9 +909,21 @@ components:
           example: true
           description: Update status
         updatedBy:
-          type: string
-          example: cst
-          description: Name of user that updated the reaction
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 1
+              description: ID of the curator
+            name:
+              type: string
+              example: Collin
+              description: Name of the curator
+            orcid:
+              type: string
+              example: 0000-0002-2938-9940
+              description: ORCID of the curator
         updatedOn:
           type: string
           example: 2020-05-11T12:43:17
